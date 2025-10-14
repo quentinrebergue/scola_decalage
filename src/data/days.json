@@ -1,26 +1,54 @@
 [
     {
-       "day": "Monday",
-       "date": "2025-04-28"
+       "day": "Saturday 27/09 (Pediluve)",
+       "date": "2025-09-27"
     },
     {
-       "day": "Tuesday",
-       "date": "2025-04-29"
+       "day": "Monday 29/09 (Piscine Week 1)",
+       "date": "2025-09-29"
     },
     {
-       "day": "Wednesday",
-       "date": "2025-04-30"
+       "day": "Tuesday 30/09 (Piscine Week 1)",
+       "date": "2025-09-30"
     },
     {
-       "day": "Thursday",
-       "date": "2025-05-01"
+       "day": "Wednesday 01/10 (Piscine Week 1)",
+       "date": "2025-10-01"
     },
     {
-       "day": "Friday",
-       "date": "2025-05-02"
+       "day": "Thursday 02/10 (Piscine Week 1)",
+       "date": "2025-10-02"
     },
     {
-       "day": "Saturday",
-       "date": "2025-05-03"
+       "day": "Friday 03/10 (Piscine Week 1)",
+       "date": "2025-10-03"
+    },
+    {
+       "day": "Saturday 04/10 (Piscine Week 1)",
+       "date": "2025-10-04"
+    },
+    {
+       "day": "Monday 06/10 (Piscine Week 2)",
+       "date": "2025-10-06"
+    },
+    {
+       "day": "Tuesday 07/10 (Piscine Week 2)",
+       "date": "2025-10-07"
+    },
+    {
+       "day": "Wednesday 08/10 (Piscine Week 2)",
+       "date": "2025-10-08"
+    },
+    {
+       "day": "Thursday 09/10 (Piscine Week 2)",
+       "date": "2025-10-09"
+    },
+    {
+       "day": "Friday 10/10 (Piscine Week 2)",
+       "date": "2025-10-10"
+    },
+    {
+       "day": "Saturday 11/10 (Piscine Week 2)",
+       "date": "2025-10-11"
     }
 ]
