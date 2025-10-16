@@ -20,10 +20,13 @@ const Perm = () => {
     const [beginHour, setBeginHour] = useState('08:00');
     const [endDay, setEndDay] = useState('');
     const [endHour, setEndHour] = useState('23:59');
-    const [missedHoursGraph, setMissedHoursGraph] = useState<number | null>(null);
-    const [missedHoursPico, setMissedHoursPico] = useState<number | null>(null);
-    const [missedHoursNano, setMissedHoursNano] = useState<number | null>(null);
-    const [missedHoursPediluve, setMissedHoursPediluve] = useState<number | null>(null);
+    const [missedHoursGraphING1, setMissedHoursGraphING1] = useState<number | null>(null);
+    const [missedHoursPicoING1, setMissedHoursPicoING1] = useState<number | null>(null);
+    const [missedHoursNanoING1, setMissedHoursNanoING1] = useState<number | null>(null);
+    const [missedHoursPediluveING1, setMissedHoursPediluveING1] = useState<number | null>(null);
+    const [missedHoursGraphAPPING1, setMissedHoursGraphAPPING1] = useState<number | null>(null);
+    const [missedHoursPicoAPPING1, setMissedHoursPicoAPPING1] = useState<number | null>(null);
+    const [missedHoursNanoAPPING1, setMissedHoursNanoAPPING1] = useState<number | null>(null);
 
     const getDateFromDay = (day: string) => {
         const found = dayMap.find(d => d.day === day);
@@ -42,10 +45,13 @@ const Perm = () => {
         const startTime = new Date(`${beginDate}T${beginHour}`);
         const endTime = new Date(`${endDate}T${endHour === '00:00' ? '23:59' : endHour}`);
 
-        let totalMissedMinutesGraph = 0;
-        let totalMissedMinutesPico = 0;
-        let totalMissedMinutesNano = 0;
-        let totalMissedMinutesPediluve = 0;
+        let totalMissedMinutesGraphING1 = 0;
+        let totalMissedMinutesPicoING1 = 0;
+        let totalMissedMinutesNanoING1 = 0;
+        let totalMissedMinutesPediluveING1 = 0;
+        let totalMissedMinutesGraphAPPING1 = 0;
+        let totalMissedMinutesPicoAPPING1 = 0;
+        let totalMissedMinutesNanoAPPING1 = 0;
 
         data.forEach(session => {
             const sessionStart = new Date(session.start);
@@ -62,28 +68,43 @@ const Perm = () => {
             time_after = time_after < 0 ? 0 : time_after;
 
             const time = differenceInMinutes(sessionEnd, sessionStart) - time_after - time_before;
-            if (session.type === 'graph')
+            if (session.type === 'graph ING1')
             {
-                totalMissedMinutesGraph += time;
+                totalMissedMinutesGraphING1 += time;
             }
-            else if (session.type === 'pico')
+            else if (session.type === 'pico ING1')
             {
-                totalMissedMinutesPico += time;
+                totalMissedMinutesPicoING1 += time;
             }
-            else if (session.type === 'nano')
+            else if (session.type === 'nano ING1')
             {
-                totalMissedMinutesNano += time;
+                totalMissedMinutesNanoING1 += time;
             }
-            else if (session.type === 'pediluve')
+            else if (session.type === 'pediluve ING1')
             {
-                totalMissedMinutesPediluve += time;
+                totalMissedMinutesPediluveING1 += time;
+            }
+            else if (session.type === 'graph APPING1')
+            {
+                totalMissedMinutesGraphAPPING1 += time;
+            }
+            else if (session.type === 'pico APPING1')
+            {
+                totalMissedMinutesPicoAPPING1 += time;
+            }
+            else if (session.type === 'nano APPING1')
+            {
+                totalMissedMinutesNanoAPPING1 += time;
             }
         });
 
-        setMissedHoursGraph(roundUpToHour(totalMissedMinutesGraph));
-        setMissedHoursPico(roundUpToHour(totalMissedMinutesPico));
-        setMissedHoursNano(roundUpToHour(totalMissedMinutesNano));
-        setMissedHoursPediluve(roundUpToHour(totalMissedMinutesPediluve));
+        setMissedHoursGraphING1(roundUpToHour(totalMissedMinutesGraphING1));
+        setMissedHoursPicoING1(roundUpToHour(totalMissedMinutesPicoING1));
+        setMissedHoursNanoING1(roundUpToHour(totalMissedMinutesNanoING1));
+        setMissedHoursPediluveING1(roundUpToHour(totalMissedMinutesPediluveING1));
+        setMissedHoursGraphAPPING1(roundUpToHour(totalMissedMinutesGraphAPPING1));
+        setMissedHoursPicoAPPING1(roundUpToHour(totalMissedMinutesPicoAPPING1));
+        setMissedHoursNanoAPPING1(roundUpToHour(totalMissedMinutesNanoAPPING1));
     };
 
     const dayOptions = dayMap.map(({ day }) => (
@@ -129,27 +150,45 @@ const Perm = () => {
             </button>
 
             {
-                missedHoursGraph !== null && (
+                missedHoursGraphING1 !== null && (
                 <p className="mt-4 text-lg font-semibold text-gray-900">
-                    Missed Graph: {missedHoursGraph} hour{missedHoursGraph !== 1 ? 's' : ''}
+                    Missed Graph (ING): {missedHoursGraphING1} hour{missedHoursGraphING1 !== 1 ? 's' : ''}
                 </p>
             )}
             {
-                missedHoursPico !== null && (
+                missedHoursPicoING1 !== null && (
                 <p className="text-lg font-semibold text-gray-900">
-                    Missed Pico: {missedHoursPico} hour{missedHoursPico !== 1 ? 's' : ''}
+                    Missed Pico (ING): {missedHoursPicoING1} hour{missedHoursPicoING1 !== 1 ? 's' : ''}
                 </p>
             )}
             {
-                missedHoursNano !== null && (
+                missedHoursNanoING1 !== null && (
                 <p className="text-lg font-semibold text-gray-900">
-                    Missed Nano: {missedHoursNano} hour{missedHoursNano !== 1 ? 's' : ''}
+                    Missed Nano (ING): {missedHoursNanoING1} hour{missedHoursNanoING1 !== 1 ? 's' : ''}
                 </p>
             )}
             {
-                missedHoursPediluve !== null && (
+                missedHoursPediluveING1 !== null && (
                 <p className="text-lg font-semibold text-gray-900">
-                    Missed Pediluve: {missedHoursPediluve} hour{missedHoursPediluve !== 1 ? 's' : ''}
+                    Missed Pediluve (ING): {missedHoursPediluveING1} hour{missedHoursPediluveING1 !== 1 ? 's' : ''}
+                </p>
+            )}
+            {
+                missedHoursGraphAPPING1 !== null && (
+                <p className="mt-4 text-lg font-semibold text-gray-900">
+                    Missed Graph (APPING): {missedHoursGraphAPPING1} hour{missedHoursGraphAPPING1 !== 1 ? 's' : ''}
+                </p>
+            )}
+            {
+                missedHoursPicoAPPING1 !== null && (
+                <p className="text-lg font-semibold text-gray-900">
+                    Missed Pico (APPING): {missedHoursPicoAPPING1} hour{missedHoursPicoAPPING1 !== 1 ? 's' : ''}
+                </p>
+            )}
+            {
+                missedHoursNanoAPPING1 !== null && (
+                <p className="text-lg font-semibold text-gray-900">
+                    Missed Nano (APPING): {missedHoursNanoAPPING1} hour{missedHoursNanoAPPING1 !== 1 ? 's' : ''}
                 </p>
             )}
         </div>
